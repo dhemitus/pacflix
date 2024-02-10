@@ -7,6 +7,7 @@ class Plan:
         self.download = None
         self.devices = None
         self.quality = None
+        self.content = None
         self.price = None
 
     def get_allplan(self):
@@ -23,6 +24,7 @@ class Plan:
                 self.download = value["Can Download"]
                 self.devices = value["Devices"]
                 self.quality = value["Quality"]
+                self.content = value["Content"]
                 self.price = value["Price"]
                 break
 
@@ -39,12 +41,13 @@ class Plan:
                 self.download = value["Can Download"]
                 self.devices = value["Devices"]
                 self.quality = value["Quality"]
+                self.content = value["Content"]
                 self.price = value["Price"]
                 break
 
         return result
 
-    def add_plan(self, name, stream, download, quality, devices, price):
+    def add_plan(self, name, stream, download, quality, devices, content, price):
         tmp = None
         for value in self.data:
             if value["Name"].lower() == name.lower():
@@ -59,8 +62,10 @@ class Plan:
                 "Can Download": download,
                 "Devices": devices,
                 "Quality": quality,
+                "Content": content,
                 "Price": price
             }
             self.data.append(tmp)
+            return self.data
         else:
-            print(f"Nama plan sudah ada!")
+            return "Nama plan sudah ada!"
