@@ -40,14 +40,16 @@ class Userplan:
         return result
 
     def get_userplan(self, user):
+        tmp = None
         for pln in self.data:
             if pln["User"] == user["Id"]:
                 pln["Plan"] = self._get_plan(pln["Plan"])
                 self.plan = pln
-                self.plan["User"] = user
+                tmp = pln
+                tmp["User"] = user
                 break
 
-        return self.plan
+        return tmp
 
     def add_userplan(self, user, plan, refferal):
         tmp = None
