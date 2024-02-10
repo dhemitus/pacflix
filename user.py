@@ -46,6 +46,6 @@ class User:
                 "Refferal": name.lower() + "-1234"
             }
             self.data.append(tmp)
-            return self.data
+            return tmp
         else:
             return "User sudah ada!"

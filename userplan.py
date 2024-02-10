@@ -43,9 +43,9 @@ class Userplan:
         tmp = None
         for pln in self.data:
             if pln["User"] == user["Id"]:
-                pln["Plan"] = self._get_plan(pln["Plan"])
-                self.plan = pln
-                tmp = pln
+                self.plan = pln.copy()
+                tmp = pln.copy()
+                tmp["Plan"] = self._get_plan(pln["Plan"])
                 tmp["User"] = user
                 break
 
@@ -71,7 +71,7 @@ class Userplan:
             "Bill": plan["Price"] - (plan["Price"] * 0.04)
         }
         self.data.append(tmp)
-        return self.data
+        return tmp
 
     def upgrade_userplan(self, user, plan):
         tmp = None
@@ -99,4 +99,4 @@ class Userplan:
             if self.data[i]["Id"] == tmp["Id"]:
                 self.data[i] = tmp
         
-        return self.data
+        return tmp

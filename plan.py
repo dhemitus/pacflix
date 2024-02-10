@@ -66,6 +66,6 @@ class Plan:
                 "Price": price
             }
             self.data.append(tmp)
-            return self.data
+            return tmp
         else:
             return "Nama plan sudah ada!"

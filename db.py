@@ -31,7 +31,7 @@ plan_data = [
         "Quality": [
             "SD"
         ],
-        "Content": "3rd party movie"
+        "Content": "3rd party movie",
         "Price": 120_000
     },
     {
@@ -44,7 +44,7 @@ plan_data = [
             "SD",
             "HD",
         ],
-        "Content": "Basic Plan + Sport Streaming"
+        "Content": "Basic Plan + Sport Streaming",
         "Price": 160_000
     },
     {
@@ -58,7 +58,7 @@ plan_data = [
             "HD",
             "UHD",
         ],
-        "Content": "Standard Plan + PacFlix Original Series and Movie"
+        "Content": "Standard Plan + PacFlix Original Series and Movie",
         "Price": 200_000
     },
 ]
@@ -94,3 +94,8 @@ user_plan = [
     }
 ]
 
+class DB:
+    def __init__(self, user, plan, userplan):
+        self.user = user
+        self.plan = plan
+        self.userplan = userplan
