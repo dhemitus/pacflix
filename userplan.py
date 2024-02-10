@@ -22,6 +22,14 @@ class Userplan:
                 break
         return tmp
 
+    def _get_refferal(self, refferal):
+        tmp = None
+        for usr in self.alluser:
+            if usr["Refferal"] == refferal:
+                tmp = usr["Refferal"]
+                break
+        return tmp
+
     def get_alluserplan(self):
         result = []
         for dat in self.data:
@@ -45,10 +53,32 @@ class Userplan:
         tmp = None
         for pln in self.data:
             if pln["User"] == user["Id"]:
-                print(f"User Sudah terdaftar!")
+                return 'User Sudah terdaftar!'
+
+        if not self._get_refferal(refferal):
+            return "Refferal invalid!"
+
+        if user["Refferal"] == refferal:
+            return "Refferal ilegal!"
+
+        tmp = {
+            "Id": len(self.data) + 1,
+            "User": user["Id"],
+            "Plan": plan["Id"],
+            "Months": 0,
+            "Bill": plan["Price"] - (plan["Price"] * 0.04)
+        }
+        self.data.append(tmp)
+        return self.data
+
+    def upgrade_userplan(self, user, plan):
+        tmp = None
+        for pln in self.data:
+            if pln["User"] == user["Id"]:
+                tmp = user
                 break
-        return tmp
 
-    def upgrade_userplan(self, name, plan):
-        pass
+        if tmp == None:
+            return "User belum terdaftar!"
 
+        return 'ada'
