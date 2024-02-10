@@ -73,12 +73,29 @@ class Userplan:
 
     def upgrade_userplan(self, user, plan):
         tmp = None
+        disc = 0
         for pln in self.data:
             if pln["User"] == user["Id"]:
-                tmp = user
+                tmp = pln
                 break
 
-        if tmp == None:
+        if not tmp:
             return "User belum terdaftar!"
 
-        return 'ada'
+        print(tmp)
+        if plan["Id"] <= tmp["Plan"]:
+            return "Upgrade invalid!"
+
+        if tmp["Months"] >= 13:
+            disc = 0.05
+        else:
+            disc = 0
+
+        tmp["Plan"] = plan["Id"]
+        tmp["Bill"] = plan["Price"] - (plan["Price"] * disc)
+
+        for i in range(len(self.data)):
+            if self.data[i]["Id"] == tmp["Id"]:
+                self.data[i] = tmp
+        
+        return self.data
