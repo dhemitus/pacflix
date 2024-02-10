@@ -39,12 +39,13 @@ class User:
                 tmp = value
                 break
 
-        if(tmp == None):
+        if not tmp:
             tmp = {
                 "Id": len(self.data) + 1,
                 "Name": name,
                 "Refferal": name.lower() + "-1234"
             }
             self.data.append(tmp)
+            return self.data
         else:
-            print(f"User sudah ada!")
+            return "User sudah ada!"

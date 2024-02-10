@@ -82,7 +82,6 @@ class Userplan:
         if not tmp:
             return "User belum terdaftar!"
 
-        print(tmp)
         if plan["Id"] <= tmp["Plan"]:
             return "Upgrade invalid!"
 

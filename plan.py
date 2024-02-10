@@ -54,7 +54,7 @@ class Plan:
                 tmp = value
                 break
 
-        if(tmp == None):
+        if not tmp:
             tmp = {
                 "Id": len(self.data) + 1,
                 "Name": name,
